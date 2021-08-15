@@ -6,6 +6,7 @@ import RepositoryList from './RepositoryList';
 import AppBar from './AppBar';
 import { StatusBar } from 'expo-status-bar';
 import SignIn from './SignIn';
+import SignOut from './SignOut';
 
 const styles = StyleSheet.create({
 	container: {
@@ -28,6 +29,9 @@ const Main = () => {
 				</Route>
 				<Route path='/signIn' exact>
 					<SignIn />
+				</Route>
+				<Route path='/signOut' exact>
+					<SignOut />
 				</Route>
 				<Redirect to='/' />
 			</Switch>
