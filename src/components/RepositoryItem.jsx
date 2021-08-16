@@ -48,30 +48,40 @@ const RepositoryItem = ({ item }) => {
 					<Image style={styles.logo} source={{ uri: item.ownerAvatarUrl }} />
 				</View>
 				<View style={styles.title}>
-					<Text fontSize='heading' color='primary' fontWeight='bold'>
+					<Text testID='fullName' fontSize='heading' color='primary' fontWeight='bold'>
 						{item.fullName}
 					</Text>
-					<Text color='textSecondary' fontSize='subheading'>
+					<Text testID='description' color='textSecondary' fontSize='subheading'>
 						{item.description}
 					</Text>
-					<Text style={styles.language}>{item.language}</Text>
+					<Text testID='language' style={styles.language}>
+						{item.language}
+					</Text>
 				</View>
 			</View>
 			<View style={styles.bottom}>
 				<View style={styles.statsSection}>
-					<Text fontWeight='bold'> {kFormatter(item.stargazersCount)}</Text>
+					<Text testID='stargazersCount' fontWeight='bold'>
+						{kFormatter(item.stargazersCount)}
+					</Text>
 					<Text color='textSecondary'>Stars</Text>
 				</View>
 				<View style={styles.statsSection}>
-					<Text fontWeight='bold'> {kFormatter(item.forksCount)}</Text>
+					<Text testID='forksCount' fontWeight='bold'>
+						{kFormatter(item.forksCount)}
+					</Text>
 					<Text color='textSecondary'>Forks</Text>
 				</View>
 				<View style={styles.statsSection}>
-					<Text fontWeight='bold'>{kFormatter(item.reviewCount)}</Text>
+					<Text testID='reviewCount' fontWeight='bold'>
+						{kFormatter(item.reviewCount)}
+					</Text>
 					<Text color='textSecondary'>Reviews</Text>
 				</View>
 				<View style={styles.statsSection}>
-					<Text fontWeight='bold'>{kFormatter(item.ratingAverage)}</Text>
+					<Text testID='ratingAverage' fontWeight='bold'>
+						{kFormatter(item.ratingAverage)}
+					</Text>
 					<Text color='textSecondary'>Rating</Text>
 				</View>
 			</View>
