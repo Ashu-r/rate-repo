@@ -13,3 +13,20 @@ export const REPO_DATA = gql`
 		ratingAverage
 	}
 `;
+
+export const REVIEWS = gql`
+	fragment Reviews on ReviewConnection {
+		edges {
+			node {
+				id
+				text
+				rating
+				createdAt
+				user {
+					id
+					username
+				}
+			}
+		}
+	}
+`;
