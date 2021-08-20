@@ -7,6 +7,7 @@ import AppBar from './AppBar';
 import { StatusBar } from 'expo-status-bar';
 import SignIn from './SignIn';
 import SignOut from './SignOut';
+import Repository from './Repository';
 
 const styles = StyleSheet.create({
 	container: {
@@ -20,7 +21,6 @@ const styles = StyleSheet.create({
 const Main = () => {
 	return (
 		<View style={styles.container}>
-			{/* <Text>Rate Repository Application</Text> */}
 			<StatusBar style='light' />
 			<AppBar />
 			<Switch>
@@ -32,6 +32,9 @@ const Main = () => {
 				</Route>
 				<Route path='/signOut' exact>
 					<SignOut />
+				</Route>
+				<Route path='/repository/:id' exact>
+					<Repository />
 				</Route>
 				<Redirect to='/' />
 			</Switch>

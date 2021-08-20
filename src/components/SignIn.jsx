@@ -1,27 +1,12 @@
 import { Formik } from 'formik';
 import React from 'react';
-import { Pressable, StyleSheet, View } from 'react-native';
-import theme from '../theme';
+import { StyleSheet, View } from 'react-native';
 import FormikTextInput from './FormikTextInput';
 import * as yup from 'yup';
 
-import Text from './Text';
 import useSignIn from '../hooks/useSignIn';
 import { useHistory } from 'react-router-native';
-
-const styles = StyleSheet.create({
-	button: {
-		justifyContent: 'center',
-		backgroundColor: theme.colors.primary,
-		padding: 10,
-		height: 50,
-		margin: 10,
-		borderRadius: 2,
-	},
-	buttonText: {
-		alignSelf: 'center',
-	},
-});
+import WideBtn from './WideBtn';
 
 const validationSchema = yup.object().shape({
 	username: yup.string().required('Username is required'),
@@ -33,16 +18,18 @@ const initialValues = {
 	password: '',
 };
 
+const styles = StyleSheet.create({
+	white: {
+		backgroundColor: 'white',
+	},
+});
+
 export const SignInForm = ({ onSubmit }) => {
 	return (
-		<View>
+		<View style={styles.white}>
 			<FormikTextInput name='username' placeholder='Username' testID='usernameField' />
 			<FormikTextInput name='password' placeholder='Password' secureTextEntry testID='passwordField' />
-			<Pressable style={styles.button} onPress={onSubmit}>
-				<Text style={styles.buttonText} fontWeight='bold' testID='submitButton' fontSize='subheading' color='white'>
-					Sign In
-				</Text>
-			</Pressable>
+			<WideBtn text='Sign In' onPress={onSubmit} />
 		</View>
 	);
 };

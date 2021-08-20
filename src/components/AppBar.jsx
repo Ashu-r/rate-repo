@@ -20,7 +20,7 @@ const AppBar = () => {
 		if (loading) {
 			return null;
 		}
-		if (!signedIn.authorizedUser) {
+		if (!signedIn || !signedIn.authorizedUser) {
 			console.log(signedIn);
 			return <AppBarTab title='Sign In' link='/signIn' />;
 		}

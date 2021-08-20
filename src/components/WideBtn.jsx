@@ -1,0 +1,30 @@
+import React from 'react';
+import { Pressable, StyleSheet } from 'react-native';
+import theme from '../theme';
+import Text from './Text';
+
+const styles = StyleSheet.create({
+	button: {
+		justifyContent: 'center',
+		backgroundColor: theme.colors.primary,
+		padding: 10,
+		height: 50,
+		margin: 10,
+		borderRadius: 2,
+	},
+	buttonText: {
+		alignSelf: 'center',
+	},
+});
+
+const WideBtn = ({ onPress, text }) => {
+	return (
+		<Pressable style={styles.button} onPress={onPress}>
+			<Text style={styles.buttonText} fontWeight='bold' testID='submitButton' fontSize='subheading' color='white'>
+				{text}
+			</Text>
+		</Pressable>
+	);
+};
+
+export default WideBtn;

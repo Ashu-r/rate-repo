@@ -1,5 +1,6 @@
 import React from 'react';
-import { Image, StyleSheet, View } from 'react-native';
+import { Image, Pressable, StyleSheet, View } from 'react-native';
+import { Link } from 'react-router-native';
 import theme from '../theme';
 import Text from './Text';
 
@@ -39,8 +40,7 @@ const styles = StyleSheet.create({
 });
 
 const kFormatter = (num) => (Math.abs(num) > 999 ? Math.sign(num) * (Math.abs(num) / 1000).toFixed(1) + 'k' : Math.sign(num) * Math.abs(num));
-
-const RepositoryItem = ({ item }) => {
+export const RepoItem = ({ item }) => {
 	return (
 		<View style={styles.item}>
 			<View style={styles.top}>
@@ -86,6 +86,16 @@ const RepositoryItem = ({ item }) => {
 				</View>
 			</View>
 		</View>
+	);
+};
+
+const RepositoryItem = ({ item }) => {
+	return (
+		<Pressable>
+			<Link to={`/repository/${item.id}`}>
+				<RepoItem item={item} />
+			</Link>
+		</Pressable>
 	);
 };
 
