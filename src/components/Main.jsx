@@ -8,6 +8,8 @@ import { StatusBar } from 'expo-status-bar';
 import SignIn from './SignIn';
 import SignOut from './SignOut';
 import Repository from './Repository';
+import Review from './Review';
+import SignUp from './SignUp';
 
 const styles = StyleSheet.create({
 	container: {
@@ -35,6 +37,12 @@ const Main = () => {
 				</Route>
 				<Route path='/repository/:id' exact>
 					<Repository />
+				</Route>
+				<Route path='/createReview' exact>
+					<Review />
+				</Route>
+				<Route path='/signUp' exact>
+					<SignUp />
 				</Route>
 				<Redirect to='/' />
 			</Switch>

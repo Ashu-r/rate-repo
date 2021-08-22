@@ -11,7 +11,7 @@ const styles = StyleSheet.create({
 		borderWidth: 2,
 	},
 	errorText: {
-		marginTop: 2,
+		marginTop: 1,
 		marginBottom: 2,
 		color: '#d73a4a',
 		margin: 10,

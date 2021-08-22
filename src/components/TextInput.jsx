@@ -11,11 +11,13 @@ const styles = StyleSheet.create({
 	loginField: {
 		padding: 10,
 		height: 50,
-		margin: 10,
+		marginTop: 10,
+		marginLeft: 10,
+		marginRight: 10,
 	},
 });
 
-const TextInput = ({ style, error, ...props }) => {
+const TextInput = ({ style, ...props }) => {
 	const textInputStyle = [styles.border, styles.loginField, style];
 
 	return <NativeTextInput style={textInputStyle} {...props} />;

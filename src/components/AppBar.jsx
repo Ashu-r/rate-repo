@@ -21,11 +21,20 @@ const AppBar = () => {
 			return null;
 		}
 		if (!signedIn || !signedIn.authorizedUser) {
-			console.log(signedIn);
-			return <AppBarTab title='Sign In' link='/signIn' />;
+			return (
+				<>
+					<AppBarTab title='Sign In' link='/signIn' />
+					<AppBarTab title='Sign Up' link='/signUp' />
+				</>
+			);
 		}
-		console.log(signedIn);
-		return <AppBarTab title='Sign Out' link='/signOut' />;
+		return (
+			<>
+				<AppBarTab title='Create a review' link='/createReview' />
+
+				<AppBarTab title='Sign Out' link='/signOut' />
+			</>
+		);
 	};
 	return (
 		<View style={styles.container}>
