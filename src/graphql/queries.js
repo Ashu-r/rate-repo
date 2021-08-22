@@ -16,8 +16,8 @@ export const GET_REPOSITORY = gql`
 
 export const ALL_REPOSITORIES = gql`
 	${REPO_DATA}
-	query GetRepo {
-		repositories {
+	query ($orderDirection: OrderDirection, $orderBy: AllRepositoriesOrderBy) {
+		repositories(orderDirection: $orderDirection, orderBy: $orderBy) {
 			edges {
 				node {
 					...RepoData
