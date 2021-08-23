@@ -27,6 +27,12 @@ export const REVIEWS = gql`
 					username
 				}
 			}
+			cursor
+		}
+		pageInfo {
+			endCursor
+			startCursor
+			hasNextPage
 		}
 	}
 `;

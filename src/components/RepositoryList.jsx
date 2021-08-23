@@ -4,7 +4,6 @@ import { FlatList, View, StyleSheet } from 'react-native';
 import { Searchbar } from 'react-native-paper';
 import { useDebounce } from 'use-debounce/lib';
 import useRepositories from '../hooks/useRepositories';
-import LoadingCircle from './LoadingCircle';
 import RepositoryItem from './RepositoryItem';
 
 const styles = StyleSheet.create({
@@ -37,6 +36,8 @@ export class RepositoryListContainer extends React.Component {
 				ListHeaderComponent={this.repoHeader}
 				ItemSeparatorComponent={ItemSeparator}
 				renderItem={RepositoryItem}
+				onEndReached={props.onEndReach}
+				onEndReachedThreshold={0.5}
 			/>
 		);
 	}
@@ -46,15 +47,24 @@ const RepositoryList = () => {
 	const [sort, setSort] = useState('CREATED_AT');
 	const [search, setSearch] = useState();
 	const [debounceSearch] = useDebounce(search, 500);
-	const { repositories, loading } = useRepositories(sort);
-	// Get the nodes from the edges array
-	if (loading) {
-		return <LoadingCircle />;
-	}
+	const orderDirection = sort === 'RATING_ASC' ? 'ASC' : 'DESC';
+	const orderBy = sort === 'CREATED_AT' ? sort : 'RATING_AVERAGE';
+	const { repositories, fetchMore } = useRepositories({ first: 8, orderBy, orderDirection, searchKeyword: debounceSearch });
 	console.log(repositories);
-
-	const repositoryNodes = repositories ? repositories.repositories.edges.map((edge) => edge.node) : [];
-	return <RepositoryListContainer search={search} setSearch={setSearch} sort={sort} setSort={setSort} repositoryNodes={repositoryNodes} />;
+	const onEndReach = () => {
+		fetchMore();
+	};
+	const repositoryNodes = repositories ? repositories.edges.map((edge) => edge.node) : [];
+	return (
+		<RepositoryListContainer
+			onEndReach={onEndReach}
+			search={search}
+			setSearch={setSearch}
+			sort={sort}
+			setSort={setSort}
+			repositoryNodes={repositoryNodes}
+		/>
+	);
 };
 
 export default RepositoryList;
