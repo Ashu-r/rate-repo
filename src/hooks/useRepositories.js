@@ -1,7 +1,7 @@
 import { useQuery } from '@apollo/client';
 import { ALL_REPOSITORIES } from '../graphql/queries';
 
-const useRepositories = (sortMethod) => {
+const useRepositories = (sortMethod, searchKeyword) => {
 	const orderDirection = sortMethod === 'RATING_ASC' ? 'ASC' : 'DESC';
 	const orderBy = sortMethod === 'CREATED_AT' ? sortMethod : 'RATING_AVERAGE';
 	const { loading, data, refetch } = useQuery(ALL_REPOSITORIES, {
@@ -9,6 +9,7 @@ const useRepositories = (sortMethod) => {
 		variables: {
 			orderDirection,
 			orderBy,
+			searchKeyword,
 		},
 	});
 
