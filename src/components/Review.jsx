@@ -56,13 +56,13 @@ const Review = () => {
 		const { ownerName, repositoryName, rating, text } = values;
 		try {
 			const data = await createReview({ ownerName, repositoryName, rating, text });
-			console.log('data' + data);
+			// console.log('data' + data);
 			if (data.hasOwnProperty('Error')) {
 				setError(data.Error);
 			}
 			history.push(`/repository/${data.id}`);
 		} catch (e) {
-			console.log('error' + e);
+			// console.log('error' + e);
 			setError(true);
 		}
 	};

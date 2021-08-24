@@ -41,6 +41,7 @@ const styles = StyleSheet.create({
 
 const kFormatter = (num) => (Math.abs(num) > 999 ? Math.sign(num) * (Math.abs(num) / 1000).toFixed(1) + 'k' : Math.sign(num) * Math.abs(num));
 export const RepoItem = ({ item }) => {
+	// console.log(item);
 	return (
 		<View style={styles.item}>
 			<View style={styles.top}>

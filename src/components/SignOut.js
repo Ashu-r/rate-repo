@@ -8,9 +8,9 @@ const SignOut = () => {
 	const authStorage = useAuthStorage();
 	const apolloClient = useApolloClient();
 	const history = useHistory();
-	console.log('logging out view');
+	// console.log('logging out view');
 	const onSignOut = async () => {
-		console.log('logging out');
+		// console.log('logging out');
 		await authStorage.removeAccessToken();
 		await apolloClient.resetStore();
 		history.push('/');

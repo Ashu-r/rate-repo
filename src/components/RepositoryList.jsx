@@ -50,7 +50,7 @@ const RepositoryList = () => {
 	const orderDirection = sort === 'RATING_ASC' ? 'ASC' : 'DESC';
 	const orderBy = sort === 'CREATED_AT' ? sort : 'RATING_AVERAGE';
 	const { repositories, fetchMore } = useRepositories({ first: 8, orderBy, orderDirection, searchKeyword: debounceSearch });
-	console.log(repositories);
+	// console.log(repositories);
 	const onEndReach = () => {
 		fetchMore();
 	};

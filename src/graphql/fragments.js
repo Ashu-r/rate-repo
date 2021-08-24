@@ -22,6 +22,10 @@ export const REVIEWS = gql`
 				text
 				rating
 				createdAt
+				repositoryId
+				repository {
+					fullName
+				}
 				user {
 					id
 					username
@@ -33,6 +37,7 @@ export const REVIEWS = gql`
 			endCursor
 			startCursor
 			hasNextPage
+			hasPreviousPage
 		}
 	}
 `;

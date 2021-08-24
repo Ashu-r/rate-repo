@@ -21,10 +21,11 @@ const styles = StyleSheet.create({
 	},
 });
 
-const WideBtn = ({ onPress, text }) => {
+const WideBtn = ({ onPress, text, style }) => {
+	const buttonStyle = [styles.button, style];
 	return (
 		<View style={styles.white}>
-			<Pressable style={styles.button} onPress={onPress}>
+			<Pressable style={buttonStyle} onPress={onPress}>
 				<Text style={styles.buttonText} fontWeight='bold' testID='submitButton' fontSize='subheading' color='white'>
 					{text}
 				</Text>

@@ -66,7 +66,7 @@ const SignUp = () => {
 			const data = await signUp({ username, password });
 			history.push(`/`);
 		} catch (e) {
-			console.log('error' + e);
+			// console.log('error' + e);
 			setError(true);
 		}
 	};

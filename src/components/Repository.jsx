@@ -1,5 +1,5 @@
 import React from 'react';
-import { FlatList, StyleSheet, View } from 'react-native';
+import { FlatList, View } from 'react-native';
 import { BackButton, useParams } from 'react-router-native';
 import * as Linking from 'expo-linking';
 import useRepository from '../hooks/useRepository';
@@ -10,8 +10,10 @@ import { ItemSeparator } from './RepositoryList';
 
 const Repository = () => {
 	const { id } = useParams();
-	const { repository, fetchMore } = useRepository({ id, first: 4 });
-
+	const { loading, repository, fetchMore } = useRepository({ id, first: 4 });
+	if (loading) {
+		return null;
+	}
 	const handlePress = () => {
 		Linking.openURL(`https://www.github.com/${repository.fullName}`);
 	};
@@ -26,7 +28,9 @@ const Repository = () => {
 			</View>
 		);
 	};
-	const reviews = repository.reviews.edges.map((e) => e.node);
+	// console.log('repo' + repository);
+	const reviews = repository?.reviews?.edges.map((e) => e.node);
+	// console.log('re' + reviews);
 	const onEndReach = () => {
 		fetchMore();
 	};

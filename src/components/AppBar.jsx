@@ -20,7 +20,7 @@ const AppBar = () => {
 		if (loading) {
 			return null;
 		}
-		if (!signedIn || !signedIn.authorizedUser) {
+		if (!signedIn) {
 			return (
 				<>
 					<AppBarTab title='Sign In' link='/signIn' />
@@ -31,7 +31,7 @@ const AppBar = () => {
 		return (
 			<>
 				<AppBarTab title='Create a review' link='/createReview' />
-
+				<AppBarTab title='My reviews' link='/myReviews' />
 				<AppBarTab title='Sign Out' link='/signOut' />
 			</>
 		);

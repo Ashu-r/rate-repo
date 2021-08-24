@@ -28,7 +28,7 @@ const styles = StyleSheet.create({
 	},
 });
 
-const ReviewItem = ({ item }) => {
+const ReviewItem = ({ item, type }) => {
 	return (
 		<View style={styles.comment}>
 			<View style={styles.rating}>
@@ -37,7 +37,7 @@ const ReviewItem = ({ item }) => {
 				</Text>
 			</View>
 			<View style={styles.meta}>
-				<Text fontWeight='bold'>{item.user.username}</Text>
+				<Text fontWeight='bold'>{type === 'myReview' ? item.repository.fullName : item.user.username}</Text>
 				<Text color='textSecondary'>{format(Date.parse(item.createdAt), 'dd/MM/yyyy')}</Text>
 				<Text>{item.text}</Text>
 			</View>

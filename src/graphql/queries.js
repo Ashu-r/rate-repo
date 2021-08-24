@@ -36,10 +36,14 @@ export const ALL_REPOSITORIES = gql`
 `;
 
 export const AUTHORIZED_USER = gql`
-	query {
+	${REVIEWS}
+	query ($includeReviews: Boolean = false, $first: Int, $after: String) {
 		authorizedUser {
 			id
 			username
+			reviews(first: $first, after: $after) @include(if: $includeReviews) {
+				...Reviews
+			}
 		}
 	}
 `;
